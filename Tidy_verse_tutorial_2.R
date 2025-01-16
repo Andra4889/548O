@@ -33,7 +33,7 @@ str(lotr_untidy)
 lotr_untidy
 
 ##### Adding untidy data to project
-write.csv(lotr_untidy, "lotr_untidy_Gender_Only.csv")
+write_csv(lotr_untidy, path = file.path("data","lotr_untidy.csv"))
 
 ####Making the data messy
 lotr_tidy <- read_csv(file.path("data", "lotr_tidy.csv"))
@@ -42,24 +42,28 @@ lotr_tidy <- read_csv(file.path("data", "lotr_tidy.csv"))
 lotr_tidy
 
 ## practicing with spread: let's get one variable per Race
-lotr_tidy %>% spread(key = Race, value = Words)
+##lotr_tidy %>% spread(key = Race, value = Words)
 
 ## practicing with spread: let's get one variable per Gender
-lotr_tidy %>% 
- spread(key = Gender, value = Words)
+##lotr_tidy %>% 
+ ##spread(key = Gender, value = Words)
 
 ## practicing with spread ... and unite: let's get one variable per combo of Race and Gender
-lotr_tidy %>% 
-  unite(Race_Gender, Race, Gender) %>% 
-  spread(key = Race_Gender, value = Words)
+##lotr_tidy %>% 
+  ##unite(Race_Gender, Race, Gender) %>% 
+  ##spread(key = Race_Gender, value = Words)
 
 ### practicing with pivot_wider...let's get one variable per Race
 lotr_tidy_pivot <- pivot_wider(lotr_tidy, names_from = "Race", values_from = "Words")
+#lotr_tidy_pivot
 
 ## practicing with pivot_wider: let's get one variable per Gender
 lotr_tidy_pivot <- pivot_wider(lotr_tidy, names_from = "Gender", values_from = "Words")
+lotr_tidy_pivot
 
 ## practicing with pivot_wider ... and unite: let's get one variable per combo of Race and Gender
-lotr_tidy %>% unite(Race_Gender, Race, Gender) %>% spread(key = Race_Gender, value = Words)
+lotr_tidy_pivot <- unite(lotr_tidy,Race_Gender, Race, Gender) %>% pivot_wider(names_from = "Race_Gender", values_from = "Words")
+lotr_tidy_pivot
 
-
+### Write the tidy data to a delimited file
+write_csv(lotr_tidy_pivot, path = file.path("data", "lotr_tidy_pivot.csv"))

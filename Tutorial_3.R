@@ -127,11 +127,27 @@ ds_weight_by_year <- surveys %>%
 
 ###EXERCISE 3 USING PIPING
 ## 1
-Surveys_3 <- surveys %>% mutate(weight) %>% na.omit(weight) %>% select(year, species_id,weight)
+Surveys_1 <- surveys %>% mutate(weight) %>% na.omit(weight) %>% select(year, species_id,weight)
 
 ##2
+Surveys_filter <- surveys %>% filter( species_id == "SH") %>% select(year, month, day)
 
-Use the filter() and select() to get the year, month, day, and species_id 
-for all of the rows in the data frame where species_id is SH.
+##3
+surveys_33 <- surveys %>% group_by(species_id) %>% summarize (abundance = n())
 
+##4
+surveys_4 <- surveys %>% group_by(species_id, year) %>% summarize (abundance = n())
 
+##5
+Mean_mass_5 <- surveys %>% filter(species_id =="DO") %>% group_by(year) %>% summarize(
+                                avg_weight = mean(weight, na.rm = TRUE))
+
+filter(surveys, species_id == "DS", year > 1995)
+filter(surveys, species_id == "DS" & year > 1995)
+
+filter(surveys, species_id == "DS" | species_id == "DM" | species_id == "DO")
+
+species_weights <- surveys %>%
+  group_by(species_id) %>%
+  filter(n() > 100) %>%
+  summarize(avg_weight = mean(weight, na.rm = TRUE))

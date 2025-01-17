@@ -126,10 +126,12 @@ ds_weight_by_year <- surveys %>%
 
 
 ###EXERCISE 3 USING PIPING
+## 1
+Surveys_3 <- surveys %>% mutate(weight) %>% na.omit(weight) %>% select(year, species_id,weight)
 
+##2
 
-
-
-
+Use the filter() and select() to get the year, month, day, and species_id 
+for all of the rows in the data frame where species_id is SH.
 
 

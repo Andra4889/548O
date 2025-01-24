@@ -1,0 +1,16 @@
+
+13.2.1 Exercise
+
+1a. What variables would you need?
+ You will need the flight, origin, destination, and tailnum variable.
+
+1b. What tables would you need to combine?
+  You will need the airports and plane variable. 
+
+2. The relationship between weather and airport is the origin. It can be 
+appeared on the diagram by drawing drawing and arrow from the airport faa 
+to origin and then to weather.
+
+3. what additional relation would it define with flights?
+  It give you information about the arrivals.
+

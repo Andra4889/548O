@@ -14,3 +14,40 @@ to origin and then to weather.
 3. what additional relation would it define with flights?
   It give you information about the arrivals.
 
+#13.4.6 Exercises
+##1
+Avg_delay_dest <- flights %>%
+  group_by(dest) %>% 
+  summarize(avg_delay = mean(dep_delay, na.rm = TRUE)) %>%
+  inner_join(airports, c("dest" = "faa" )) %>% 
+  ggplot(aes(color = avg_delay,lon, lat)) +
+  borders("state") +
+  geom_point() +
+  coord_quickmap()  
+  
+Avg_delay_dest
+
+
+##2 Add the location of the origin and destination (i.e. the lat and lon)
+#to flights.
+
+flights_with_origin <- flights %>% select(year:day,hour, origin, dest) %>%  
+  left_join(select(airports,"faa","lat","lon"), by = c("origin" = "faa")) 
+  left_join(select(airports, "faa","lat","lon"), by = c("dest" = "faa"))
+
+##3
+Yes
+
+##2. 
+Planesless100 <- flights %>% group_by(tailnum)%>%
+  summarize(flight_count = n()) %>%  filter(flight_count<=100) %>% 
+  semi_join(Planesless100, by = "tailnum")
+  
+##5.
+
+anti_join(flights, airports, by = c("dest" = "faa"))
+# This shows all flights outside of the US
+anti_join(airports, flights, by = c("faa" = "dest"))
+# This shows all US airports that were not listed under "dest" in the flight table 
+
+

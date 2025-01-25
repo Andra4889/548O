@@ -46,6 +46,9 @@ grep("\\^ab", strings, value = TRUE)
 grep("abc|abd", strings, value = TRUE)
 gsub("(ab) 12", "\\1 34", strings)
 
-
-
-
+##Exercise 3
+Country <- levels(gDat$country)
+Step_a <- grep("i|t", Country, value = TRUE)
+Step_b <- grep("land$",Step_a, value = TRUE)
+Step_c <- gsub("land","LAND", Step_b)
+print(Step_c)

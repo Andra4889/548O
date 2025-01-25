@@ -52,3 +52,28 @@ Step_a <- grep("i|t", Country, value = TRUE)
 Step_b <- grep("land$",Step_a, value = TRUE)
 Step_c <- gsub("land","LAND", Step_b)
 print(Step_c)
+
+
+##General modes for patterns
+(strings <- c("Axbc", "A.bc"))
+pattern <- "A.b"
+grep(pattern, strings, value = TRUE)
+grep(pattern, strings, value = TRUE, fixed = TRUE)
+
+pattern <- "a.b"
+grep(pattern, strings, value = TRUE)
+grep(pattern, strings, value = TRUE, ignore.case = TRUE)
+
+
+##Exercise 4
+Country<- levels(gDat$country)
+Country_o <- grep("o",Country, value = TRUE, ignore.case = TRUE)
+print(Country_o)
+
+
+
+
+
+
+
+

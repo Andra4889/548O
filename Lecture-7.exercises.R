@@ -30,6 +30,15 @@ Pounds_to_Grams <- function(Pounds) {
 # Calculate grams for 3.75 pounds
 Grams_3_75_to_pounds <- Pounds_to_Grams (3.75); Grams_3_75_to_pounds
 
+## Mass from length of  the theropada
+get_mass_from_length_theropoda <- function(length){
+  mass <- 0.73 * length ^ 3.63
+  return(mass)
+}
 
-
+##Mass of a Spinosaurus
+Mass_16m <- get_mass_from_length_theropoda(16); Mass_16m
+  
+  
+  
 

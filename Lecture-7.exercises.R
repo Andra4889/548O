@@ -74,6 +74,58 @@ b_sauropoda <- 1.46
 ##Mass of a Sauropoda
 Mass_sauropoda_2 <- get_mass_from_length(22, 214.44, 1.46);Mass_sauropoda_2
 
+##3.2 
+get_mass_from_length_3 <- function(length, a = 39.9, b = 2.6) {
+  mass <- a * (length ^ b)
+  return(mass)
+}
+# unknown dinosaur 
+mass_unknown_dinosaur <- get_mass_from_length(16);mass_unknown_dinosaur
+
+##Named vs unnamed arguments
+calc_shrub_vol(length = 2.0, width = 0.8, height = 1.6)
+calc_shrub_vol(2.0, 0.8, 1.6)
+
+##Combining Functions
+est_shrub_mass <- function(volume){
+  mass <- 2.65 * volume^0.9
+}
+
+shrub_volume <- calc_shrub_vol(0.8, 1.6, 2.0)
+shrub_mass <- est_shrub_mass(shrub_volume)
+
+library(dplyr)
+shrub_mass <- calc_shrub_vol(0.8, 1.6, 2.0) %>%
+  est_shrub_mass()
+
+##Exercise 4
+
+# kilograms to pounds
+KG_to_Pounds <- function(kg) {
+  pounds <- kg * 2.205
+  return(pounds)
+}
+
+#mass based on length with default a and b values
+get_mass_from_length_4 <- function(length, a = 39.9, b = 2.6) {
+  mass <- a * (length ^ b)
+  return(mass)
+}
+
+# Parameters
+length_stegosaurus <- 12       # in meters
+a_stegosaurus <- 10.95
+b_stegosaurus <- 2.64
+
+# mass in kilograms
+mass_kg <- get_mass_from_length(length_stegosaurus, a_stegosaurus, b_stegosaurus);mass_kg
+
+# Convert the mass to pounds
+mass_pounds <- KG_to_Pounds(mass_kg); mass_pounds
+
+
+
+
 
 
 

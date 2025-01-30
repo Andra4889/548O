@@ -107,10 +107,67 @@ if (age_class =="sapling"){y = 10
 } else (y = 0)
 y
 
+# Multiple ifs vs else if
+x <- 5
+if (x > 2){
+  x * 2
+}
+if (x > 4){
+  x * 4
+}
 
 
+x <- 5
+if (x > 2){
+  x * 2
+} else if (x > 4){
+  x * 4
+}
 
 
+##Wrap conditionals within a function
+est_mass <- function(volume, veg_type){
+  if (veg_type == "tree") {
+    mass <- 2.65 * volume^0.9
+  } else if (veg_type == "grass") {
+    mass <- 0.65 * volume^1.2
+  } else {
+    print("I don't know how to convert volume to mass for that vegetation type")
+    mass <- NA
+  }
+  return(mass)
+}
+
+est_mass(1.6, "tree")
+est_mass(1.6, "grass")
+est_mass(1.6, "shrub")
+
+##Exercise 4
+get_mass_from_length_by_name <- function(length,name){
+  if(name == "Stegosauria"){
+  a = 10.95 
+  b = 2.64
+  } else if 
+  (name == "Theropoda"){
+    a = 0.73
+    b = 3.63
+  } else if 
+  (name == "Sauropoda"){
+    a = 214.44
+    b = 1.46
+  } else {
+      a = NA
+      b = NA
+    }
+  
+  mass <- a * (length ^ b)
+  return(mass)
+  }
+get_mass_from_length_by_name(name="Stegosauria", length=10)
+get_mass_from_length_by_name(name="Theropoda", length=8)
+get_mass_from_length_by_name(name="Sauropoda", length=12)
+get_mass_from_length_by_name(name="Ankylosauria", length=13)  
+  
 
 
 

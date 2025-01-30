@@ -123,9 +123,10 @@ mass_kg <- get_mass_from_length(length_stegosaurus, a_stegosaurus, b_stegosaurus
 # Convert the mass to pounds
 mass_pounds <- KG_to_Pounds(mass_kg); mass_pounds
 
-
-
-
+## Mass piping
+mass_stegosaurus_2 <- length_stegosaurus %>%
+  get_mass_from_length_4 (a = a_stegosaurus, b = b_stegosaurus) %>%
+  KG_to_Pounds(); mass_stegosaurus_2
 
 
 

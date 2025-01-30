@@ -41,10 +41,33 @@ x > y
 masses > 40
 
 
+###if statements
 
+x <- 6
+if (x > 5){
+  x <- x^2
+}
+x
 
+x = 4
+if (x > 5){
+  x <- x^2
+}
+x
 
+veg_type <- "tree"
+volume <- 16.08
+if (veg_type == "tree") {
+  mass <- 2.65 * volume^0.9
+}
+mass
 
+##Exercise 2
+age_class = "sapling"
+if (age_class == "sapling"){y <- 10
+  
+}
+y
 
 
 

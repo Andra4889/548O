@@ -168,17 +168,88 @@ get_mass_from_length_by_name(name="Theropoda", length=8)
 get_mass_from_length_by_name(name="Sauropoda", length=12)
 get_mass_from_length_by_name(name="Ankylosauria", length=13)  
   
+##Nested conditionals
+
+est_mass <- function(volume, veg_type, age){
+  if (veg_type == "tree") {
+    if (age < 5) {
+      mass <- 1.6 * volume^0.8
+    } else {
+      mass <- 2.65 * volume^0.9
+    }
+  } else if (veg_type == "grass" | veg_type == "shrub") {
+    mass <- 0.65 * volume^1.2
+  } else {
+    print("I don't know how to convert volume to mass for that vegetation type")
+    mass <- NA
+  }
+  return(mass)
+}
+
+est_mass(1.6, "tree", age = 2)
+est_mass(1.6, "shrub", age = 5)
 
 
+##Basic for loop
+for (item in list_of_items) {
+  do_something(item)
+}
+
+print()
+
+volumes = c(1.6, 3, 8)
+for (volume in volumes){
+  print(2.65 * volume^0.9)
+}
+
+volume <- volumes[1]
+print(2.65 * volume ^ 0.9)
+volume <- volumes[2]
+print(2.65 * volume ^ 0.9)
+volume <- volumes[3]
+print(2.65 * volume ^ 0.9)
 
 
+for (volume in volumes){
+  mass <- 2.65 * volume ^ 0.9
+  mass_lb <- mass * 2.2
+  print(mass_lb)
+}
 
+## Exercise 5
+#5.1
+for (i in 2:16){
+  print(i)
+}
 
+#5.2
 
+for (i in 1:5){
+  print(i*3)
+}
 
+#5.3
+birds = c('robin', 'woodpecker', 'blue jay', 'sparrow')
+for (i in 1:length(birds)){
+  print(birds[i])
+}
 
+#5.4
+radius <- c(1.3, 2.1, 3.5)
+areas <- vector(mode = "numeric", length = length(radius))
+for (i in 1:length(radius)){
+  areas[i] <- pi * radius[i] ^ 2
+}
+areas
 
-
+#5.5
+lengths = c(1.1, 2.2, 1.6)
+widths = c(3.5, 2.4, 2.8)
+areas <- vector(length = length(lengths))
+for (i in length(lengths)) {
+  areas[i] <- lengths[i] * widths[i]
+}
+areas
 
 
 

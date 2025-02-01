@@ -251,11 +251,28 @@ for (i in length(lengths)) {
 }
 areas
 
+##Looping with an index & storing results
+for (i in 1:length(volumes)){
+  mass <- 2.65 * volumes[i] ^ 0.9
+  print(mass)
+}
 
+masses <- vector(mode = "numeric", length = length(volumes))
+masses
 
+for (i in 1:length(volumes)){
+  mass <- 2.65 * volumes[i] ^ 0.9
+  masses[i] <- mass
+}
+masses
 
-
-
+b0 <- c(2.65, 1.28, 3.29)
+b1 <- c(0.9, 1.1, 1.2)
+masses <- vector(mode="numeric", length=length(volumes))
+for (i in seq_along(volumes)){
+  mass <- b0[i] * volumes[i] ^ b1[i]
+  masses[i] <- mass
+}
 
 
 
